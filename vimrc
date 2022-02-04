@@ -29,6 +29,8 @@ set wrap
 set numberwidth=4
 set t_Co=256
 set showtabline=2
+set guioptions-=T  "toolbar
+set guifont=Hasklug\ Nerd\ Font\ 16
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
