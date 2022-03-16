@@ -8,7 +8,7 @@ set nocompatible
 set langmenu=en
 set encoding=utf-8
 set fileencodings=utf8,gbk
-set backspace=2
+""set backspace=4
 set incsearch
 set shortmess-=S
 set showcmd
@@ -18,8 +18,8 @@ syntax on
 set ruler
 set autoindent
 set cindent
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set expandtab
 %retab!
 set history=1000
@@ -81,7 +81,7 @@ nnoremap <leader>l :BLines<CR>
 nnoremap <leader>cl :CocFzfList<CR>
 nnoremap <leader>rn *Ncgn
 nnoremap <leader>rp :REPLToggle<CR>
-nnoremap <leader>c :REPLSendSession<CR>
+nnoremap <Leader>cc  :Commentary<CR>
 nnoremap <leader>m :call ToggleMouse()<CR>
 nnoremap <silent> <leader>s      :<C-u>CocFzfList outline<CR>
 " Maps Ctrl-[h,j,k,l] to resizing a window split
@@ -114,6 +114,7 @@ command -nargs=1 Vsb call VsbFunction(<f-args>)
 ""
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-commentary'
 Plug 'sillybun/vim-repl'
 Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -123,6 +124,8 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mechatroner/rainbow_csv'
 Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim'
+Plug 'wakatime/vim-wakatime'
+Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 call plug#end()
 
 ""         _                                         _    

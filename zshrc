@@ -130,7 +130,9 @@ alias pxoff="unset http_proxy; unset https_proxy"
 alias draw="~/Workspace/Personal/Ascii_Signature/ascii_signature.sh -s"
 alias so="source"
 alias tran="trans :zh"
-
+alias kboff="xinput disable 'AT Translated Set 2 keyboard'"
+alias kbon="xinput enable 'AT Translated Set 2 keyboard'"
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
