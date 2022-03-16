@@ -26,6 +26,9 @@ set history=1000
 set hlsearch
 set novb
 set wrap
+" 内置补全开启
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 set numberwidth=4
 set t_Co=256
 set showtabline=2
