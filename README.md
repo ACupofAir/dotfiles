@@ -12,5 +12,3 @@ Organize my dotfiles with ln command; and sync them with git.
 * `ln -s thisFoldPosition/vimrc ~/.vimrc`
 * Open your vim, and type `:PlugInstall` to install the plugs in my dotfile
 * **notice:** You may need set your proxy firstly(If you have config the zshrc, you can use `pxon` command)
-
-

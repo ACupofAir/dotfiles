@@ -34,6 +34,7 @@ set t_Co=256
 set showtabline=2
 set guioptions-=T  "toolbar
 set guifont=Hasklug\ Nerd\ Font\ 16
+set ttimeoutlen=0
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -129,6 +130,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+Plug 'rlue/vim-barbaric'
 call plug#end()
 
 ""         _                                         _    
@@ -163,28 +165,3 @@ let g:repl_code_block_fences = {'python': '#%%', 'zsh': '# %%', 'markdown': '```
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "nerdtree:
 let NERDTreeShowHidden=1
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-"##### auto fcitx  ###########
-let g:input_toggle = 1
-function! Fcitx2en()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status == 2
-      let g:input_toggle = 1
-      let l:a = system("fcitx-remote -c")
-   endif
-endfunction
-
-function! Fcitx2zh()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status != 2 && g:input_toggle == 1
-      let l:a = system("fcitx-remote -o")
-      let g:input_toggle = 0
-   endif
-endfunction
-
-set ttimeoutlen=150
-"Exit insert mode
-autocmd InsertLeave * call Fcitx2en()
-"Enter insert mode
-autocmd InsertEnter * call Fcitx2zh()
-"##### auto fcitx end ######
