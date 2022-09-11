@@ -79,12 +79,15 @@ local config = {
 
 	-- set dashboard header
 	header = {
-		" █████  ███████ ████████ ██████   ██████",
-		"██   ██ ██         ██    ██   ██ ██    ██",
-		"███████ ███████    ██    ██████  ██    ██",
-		"██   ██      ██    ██    ██   ██ ██    ██",
-		"██   ██ ███████    ██    ██   ██  ██████",
-		" ",
+		"          ▀████▀▄▄              ▄█ ",
+		"            █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█ ",
+		"    ▄        █          ▀▀▀▀▄  ▄▀  ",
+		"   ▄▀ ▀▄      ▀▄              ▀▄▀  ",
+		"  ▄▀    █     █▀   ▄█▀▄      ▄█    ",
+		"  ▀▄     ▀▄  █     ▀██▀     ██▄█   ",
+		"   ▀▄    ▄▀ █   ▄██▄   ▄  ▄  ▀▀ █  ",
+		"    █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀  ",
+		"   █   █  █      ▄▄           ▄▀   ",
 		"    ███    ██ ██    ██ ██ ███    ███",
 		"    ████   ██ ██    ██ ██ ████  ████",
 		"    ██ ██  ██ ██    ██ ██ ██ ████ ██",
@@ -198,8 +201,14 @@ local config = {
 			["<leader>rt"] = { "<cmd>ReplToggle<cr>", desc = "Toggle nvim-repl" },
 			["<leader>rr"] = { "<cmd>ReplSend<cr>", desc = "nvim-repl send current line" },
 			["<leader>rc"] = { "<cmd>ReplRunCell<cr>", desc = "nvim-repl run cell" },
-			["<leader>fd"] = { "<cmd>lcd %:p:h<cr>", desc = "Go to the current file directory" },
+			["<leader>fd"] = { "<cmd>cd %:p:h<cr>", desc = "Go to the current file directory" },
 			["<leader>fp"] = { "<cmd>call mdip#MarkdownClipboardImage()<CR>", desc = "Paste image from clipboard" },
+			["<leader>fw"] = {
+				function()
+					require("telescope.builtin").live_grep({ grep_open_files = true })
+				end,
+				desc = "Search words in open files",
+			},
 			["<F11>"] = { "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", desc = "Toggle Full Screen" },
 			-- ["<c-_"] = { function() require("Comment.api").toggle.linewise.current() end, desc = "Comment line" }
 		},
