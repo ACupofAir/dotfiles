@@ -65,6 +65,7 @@ local config = {
 				python = "ipython --no-autoindent",
 			},
 			mdip_imgdir = "res",
+			translator_default_engines = { "bing", "haici" },
 		},
 	},
 	-- if you need more control, you can use the function()...end notation
@@ -209,6 +210,7 @@ local config = {
 				end,
 				desc = "Search words in open files",
 			},
+			["<Leader>tr"] = { "<Plug>TranslateW", desc = "Display translation in a window" },
 			["<F11>"] = { "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", desc = "Toggle Full Screen" },
 			-- ["<c-_"] = { function() require("Comment.api").toggle.linewise.current() end, desc = "Comment line" }
 		},
@@ -222,7 +224,7 @@ local config = {
 		-- ["<esc>"] = false,
 	},
 	v = {
-
+		["<Leader>tr"] = { "<Plug>TranslateWV", desc = "Display translation in a window" },
 		-- ["<c-_"] = { "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", desc = "Toggle comment line", }
 	},
 
@@ -255,8 +257,13 @@ local config = {
 			{ "tpope/vim-repeat" },
 			{ "ACupofAir/nvim-repl", ft = "python" },
 			{ "hrsh7th/cmp-emoji", ft = "markdown" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-cmdline" },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
+			-- { "folke/lua-dev.nvim" },
 			{ "md-img-paste-devs/md-img-paste.vim", ft = "markdown" },
 			{ "f3fora/cmp-spell" },
+			{ "voldikss/vim-translator" },
 			-- we also support a key value style plugin definition similar to nvchad:
 			-- ["ray-x/lsp_signature.nvim"] = {
 			--   event = "bufread",
@@ -278,10 +285,12 @@ local config = {
 			-- check supported formatters and linters
 			-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 			-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+			config.debug = false
 			config.sources = {
 				-- set a formatter
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettier,
+				null_ls.builtins.formatting.black,
 			}
 			-- set up null-ls's on_attach function
 			-- note: you can remove this on attach function to disable format on save
@@ -372,6 +381,16 @@ local config = {
 			},
 		},
 	},
+
+	-- ["lua-dev"] = {
+	-- 	library = {
+	-- 		enable = true,
+	-- 		runtime = true,
+	-- 		types = true,
+	-- 		plugins = true,
+	-- 	},
+	-- 	override = function(rood_dir, options) end,
+	-- },
 
 	-- this function is run last and is a good place to configuring
 	-- augroups/autocommands and custom filetypes also this just pure lua so
