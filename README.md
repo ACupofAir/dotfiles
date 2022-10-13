@@ -6,6 +6,15 @@ dotfiles
 
 ## :toolbox:Usage
 
+### PowerShell Config `zshrc`
+
+- lookup the powershell version `$PSVersionTable`
+- Install powershell 7
+- `mkdir ~/Document/PowerShell`
+- Install [StarShip](https://github.com/starship/starship) `scoop install starship`
+- Install :link:[PSReadline](https://github.com/PowerShell/PSReadLine) click the link and look the readme
+- `cp Microsoft.PowerShell_profile.ps1 ~/Document/PowerShell/Microsoft.PowerShell_profile.ps1`
+
 ### Zsh Config `zshrc`
 
 - Clone this repository to your own machine
@@ -21,6 +30,8 @@ dotfiles
 - **notice:** You may need set your proxy firstly(If you have config the zshrc, you can use `pxon` command)
 
 ### Neovim Config `init.lua`
+
+> `init_offline.lua` is the offline version of user/init.lua
 
 - On windows :window: wiht :link:[Atsrovim](AstroNvim/AstroNvim) `ln init.lua ~/AppData/Local/nvim/lua/user/init.lua`
 
