@@ -13,7 +13,7 @@ dotfiles
 - `mkdir ~/Document/PowerShell`
 - Install [StarShip](https://github.com/starship/starship) `scoop install starship`
 - Install :link:[PSReadline](https://github.com/PowerShell/PSReadLine) click the link and look the readme
-- `cp Microsoft.PowerShell_profile.ps1 ~/Document/PowerShell/Microsoft.PowerShell_profile.ps1`
+- `ln xxx/dotfile/Microsoft.PowerShell_profile.ps1 ~/Document/PowerShell/Microsoft.PowerShell_profile.ps1`
 
 ### Zsh Config `zshrc`
 
@@ -38,3 +38,4 @@ dotfiles
 ## :warning:note
 
 - On windows: `ln -s` will not work right, should use hard link `ln file1 file2`
+- Should use full path `ln -s $fullpath/dotfile/xxx $fullpath/xxx`
