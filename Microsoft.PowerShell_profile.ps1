@@ -25,6 +25,11 @@ function Get-Historys
   Get-Content (Get-PSReadlineOption).HistorySavePath
 }
 
+function Start-Conda
+{
+   (& "C:\Users\air\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+}
+
 ###############################################################################
 ################################My-Alias#######################################
 ###############################################################################
