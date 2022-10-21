@@ -30,6 +30,11 @@ function Start-Conda
    (& "C:\Users\air\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
 }
 
+function Get-Weather-Report
+{
+  Invoke-RestMethod https://wttr.in
+}
+
 ###############################################################################
 ################################My-Alias#######################################
 ###############################################################################
@@ -37,4 +42,5 @@ Set-Alias -Name pxon Set-Proxy
 Set-Alias -Name pxoff Clear-Proxy
 Set-Alias -Name wc measure
 Set-Alias -Name historys Get-Historys
+Set-Alias -Name weather Get-Weather-Report
 
