@@ -242,13 +242,14 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-      {
-        "iamcco/markdown-preview.nvim",
-        run = function()
-          vim.fn["mkdp#util#install"]()
-        end,
-        ft = "markdown",
-      },
+      -- Dont use this fuck preview extension
+      -- {
+      --   "iamcco/markdown-preview.nvim",
+      --   run = function()
+      --     vim.fn["mkdp#util#install"]()
+      --   end,
+      --   ft = "markdown",
+      -- },
       { "tpope/vim-surround" },
       { "tpope/vim-repeat" },
       { "ACupofAir/nvim-repl", ft = "python" },
@@ -271,7 +272,15 @@ local config = {
     cmp = {
       sources = {
         { name = "emoji" },
-        { name = "spell" },
+        {
+          name = 'spell',
+          option = {
+            keep_all_entries = true,
+            enable_in_context = function()
+              return true
+            end,
+          },
+        },
       },
     },
     -- all other entries override the require("<key>").setup({...}) call for default plugins
