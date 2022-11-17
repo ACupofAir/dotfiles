@@ -14,6 +14,12 @@ function Set-Proxy
   $env:https_proxy="http://127.0.0.1:7890"
 }
 
+function Set-Git-Proxy
+{
+  git config --global http.proxy "http://127.0.0.1:7890"
+  git config --global https.proxy "http://127.0.0.1:7890"
+}
+
 function Clear-Proxy
 {
   $env:http_proxy=""
