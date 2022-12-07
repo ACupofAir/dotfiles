@@ -41,6 +41,11 @@ function Get-Weather-Report
   Invoke-RestMethod https://wttr.in
 }
 
+function Translate-Text($text)
+{
+  python -m googletranslate zh-CN -r "plain" $text
+}
+
 ###############################################################################
 ################################My-Alias#######################################
 ###############################################################################
@@ -49,4 +54,4 @@ Set-Alias -Name pxoff Clear-Proxy
 Set-Alias -Name wc measure
 Set-Alias -Name historys Get-Historys
 Set-Alias -Name weather Get-Weather-Report
-
+Set-Alias -Name trans Translate-Text
