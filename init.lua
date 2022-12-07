@@ -34,7 +34,7 @@ local config = {
     --   normal = { bg = "#000000" },
     -- },
     default_theme = function(highlights) -- or a function that returns a new table of colors to set
-      local c = require("default_theme.colors")
+      local c = require "default_theme.colors"
 
       highlights.normal = { fg = c.fg, bg = c.bg }
       return highlights
@@ -201,9 +201,7 @@ local config = {
       ["<leader>fd"] = { "<cmd>cd %:p:h<cr>", desc = "Go to the current file directory" },
       ["<leader>fp"] = { "<cmd>call mdip#MarkdownClipboardImage()<CR>", desc = "Paste image from clipboard" },
       ["<leader>fw"] = {
-        function()
-          require("telescope.builtin").live_grep({ grep_open_files = true })
-        end,
+        function() require("telescope.builtin").live_grep { grep_open_files = true } end,
         desc = "Search words in open files",
       },
       ["<Leader>tr"] = { "<Plug>TranslateW", desc = "Display translation in a window" },
@@ -274,12 +272,10 @@ local config = {
       sources = {
         { name = "emoji" },
         {
-          name = 'spell',
+          name = "spell",
           option = {
             keep_all_entries = true,
-            enable_in_context = function()
-              return true
-            end,
+            enable_in_context = function() return true end,
           },
         },
       },
@@ -308,7 +304,7 @@ local config = {
     --   end
     --   return config -- return final config table to use in require("null-ls").setup(config)
     -- end,
-    ['nvim-treesitter'] = {
+    ["nvim-treesitter"] = {
       configs = {
         textobjects = {
           select = {
@@ -334,9 +330,9 @@ local config = {
             -- and should return the mode ('v', 'V', or '<c-v>') or a table
             -- mapping query_strings to modes.
             selection_modes = {
-              ['@parameter.outer'] = 'v', -- charwise
-              ['@function.outer'] = 'V', -- linewise
-              ['@class.outer'] = '<c-v>', -- blockwise
+              ["@parameter.outer"] = "v", -- charwise
+              ["@function.outer"] = "V", -- linewise
+              ["@class.outer"] = "<c-v>", -- blockwise
             },
             -- If you set this to `true` (default is `false`) then any textobject is
             -- extended to include preceding or succeeding whitespace. Succeeding
@@ -350,7 +346,7 @@ local config = {
             include_surrounding_whitespace = true,
           },
         },
-      }
+      },
     },
     treesitter = { -- overrides `require("treesitter").setup(...)`
       -- ensure_installed = { "lua", "c", "cpp", "python" },
@@ -384,7 +380,7 @@ local config = {
       ensure_installed = { "prettier", "stylua" },
     },
     packer = { -- overrides `require("packer").setup(...)`
-      compile_path = vim.fn.stdpath("data") .. "/packer_compiled.lua",
+      compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",
     },
   },
 
@@ -444,20 +440,18 @@ local config = {
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
     Terminal = require("toggleterm.terminal").Terminal
-    local powershell = Terminal:new({ cmd = "pwsh", dir = "%:p:h" })
+    local powershell = Terminal:new { cmd = "pwsh", dir = "%:p:h" }
     TOGGLE_POWERSHELL =
-    function()
-      powershell:toggle()
-    end,
-        -- set autocommands
-        -- vim.api.nvim_set_current_dir("~/Desktop")
-        -- set key binding
-        vim.api.nvim_set_keymap(
-          "n",
-          "<leader>ts",
-          "<cmd>lua TOGGLE_POWERSHELL()<CR>",
-          { noremap = true, silent = true, desc = "Toggle float powershell" }
-        )
+      function() powershell:toggle() end,
+            -- set autocommands
+      -- vim.api.nvim_set_current_dir("~/Desktop")
+      -- set key binding
+vim.api.nvim_set_keymap(
+        "n",
+        "<leader>ts",
+        "<cmd>lua TOGGLE_POWERSHELL()<CR>",
+        { noremap = true, silent = true, desc = "Toggle float powershell" }
+      )
     vim.api.nvim_set_keymap(
       "n",
       "<c-\\>",
