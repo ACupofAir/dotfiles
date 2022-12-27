@@ -257,7 +257,6 @@ local config = {
       { "hrsh7th/cmp-nvim-lsp-signature-help" },
       -- { "folke/lua-dev.nvim" },
       { "md-img-paste-devs/md-img-paste.vim", ft = "markdown" },
-      { "f3fora/cmp-spell" },
       { "voldikss/vim-translator" },
       { "nvim-treesitter/nvim-treesitter-textobjects" },
       -- we also support a key value style plugin definition similar to nvchad:
@@ -270,14 +269,7 @@ local config = {
     },
     cmp = {
       sources = {
-        { name = "emoji" },
-        {
-          name = "spell",
-          option = {
-            keep_all_entries = true,
-            enable_in_context = function() return true end,
-          },
-        },
+        { name = "emoji" }
       },
     },
     -- all other entries override the require("<key>").setup({...}) call for default plugins
@@ -442,16 +434,16 @@ local config = {
     Terminal = require("toggleterm.terminal").Terminal
     local powershell = Terminal:new { cmd = "pwsh", dir = "%:p:h" }
     TOGGLE_POWERSHELL =
-      function() powershell:toggle() end,
-            -- set autocommands
-      -- vim.api.nvim_set_current_dir("~/Desktop")
-      -- set key binding
-vim.api.nvim_set_keymap(
-        "n",
-        "<leader>ts",
-        "<cmd>lua TOGGLE_POWERSHELL()<CR>",
-        { noremap = true, silent = true, desc = "Toggle float powershell" }
-      )
+    function() powershell:toggle() end,
+        -- set autocommands
+        -- vim.api.nvim_set_current_dir("~/Desktop")
+        -- set key binding
+        vim.api.nvim_set_keymap(
+          "n",
+          "<leader>ts",
+          "<cmd>lua TOGGLE_POWERSHELL()<CR>",
+          { noremap = true, silent = true, desc = "Toggle float powershell" }
+        )
     vim.api.nvim_set_keymap(
       "n",
       "<c-\\>",
