@@ -53,6 +53,7 @@ local config = {
       autochdir = false,
       spell = true,
       spelllang = { "en_us" },
+      fileformat = "unix",
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
@@ -240,26 +241,6 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-      -- Dont use this fuck preview extension
-      -- {
-      --   "iamcco/markdown-preview.nvim",
-      --   run = function()
-      --     vim.fn["mkdp#util#install"]()
-      --   end,
-      --   ft = "markdown",
-      -- },
-      { "tpope/vim-surround" },
-      { "tpope/vim-repeat" },
-      { "ACupofAir/nvim-repl", ft = "python" },
-      { "hrsh7th/cmp-emoji", ft = "markdown" },
-      { "hrsh7th/cmp-nvim-lua" },
-      { "hrsh7th/cmp-cmdline" },
-      { "hrsh7th/cmp-nvim-lsp-signature-help" },
-      -- { "folke/lua-dev.nvim" },
-      { "md-img-paste-devs/md-img-paste.vim", ft = "markdown" },
-      { "f3fora/cmp-spell" },
-      { "voldikss/vim-translator" },
-      { "nvim-treesitter/nvim-treesitter-textobjects" },
       -- we also support a key value style plugin definition similar to nvchad:
       -- ["ray-x/lsp_signature.nvim"] = {
       --   event = "bufread",
@@ -267,17 +248,26 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
+      { "tpope/vim-surround" },
+      { "tpope/vim-repeat" },
+      { "ACupofAir/nvim-repl", ft = "python" },
+      { "hrsh7th/cmp-emoji", ft = "markdown" },
+      { "hrsh7th/cmp-nvim-lua" },
+      { "hrsh7th/cmp-cmdline" },
+      { "hrsh7th/cmp-spell" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
+      { "md-img-paste-devs/md-img-paste.vim", ft = "markdown" },
+      { "voldikss/vim-translator" },
     },
     cmp = {
       sources = {
         { name = "emoji" },
-        {
-          name = "spell",
+        { name = "spell",
           option = {
             keep_all_entries = true,
             enable_in_context = function() return true end,
-          },
-        },
+          }
+        }
       },
     },
     -- all other entries override the require("<key>").setup({...}) call for default plugins
@@ -304,50 +294,6 @@ local config = {
     --   end
     --   return config -- return final config table to use in require("null-ls").setup(config)
     -- end,
-    ["nvim-treesitter"] = {
-      configs = {
-        textobjects = {
-          select = {
-            enable = true,
-
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
-
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              -- You can optionally set descriptions to the mappings (used in the desc parameter of
-              -- nvim_buf_set_keymap) which plugins like which-key display
-              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-            },
-            -- You can choose the select mode (default is charwise 'v')
-            --
-            -- Can also be a function which gets passed a table with the keys
-            -- * query_string: eg '@function.inner'
-            -- * method: eg 'v' or 'o'
-            -- and should return the mode ('v', 'V', or '<c-v>') or a table
-            -- mapping query_strings to modes.
-            selection_modes = {
-              ["@parameter.outer"] = "v", -- charwise
-              ["@function.outer"] = "V", -- linewise
-              ["@class.outer"] = "<c-v>", -- blockwise
-            },
-            -- If you set this to `true` (default is `false`) then any textobject is
-            -- extended to include preceding or succeeding whitespace. Succeeding
-            -- whitespace has priority in order to act similarly to eg the built-in
-            -- `ap`.
-            --
-            -- Can also be a function which gets passed a table with the keys
-            -- * query_string: eg '@function.inner'
-            -- * selection_mode: eg 'v'
-            -- and should return true of false
-            include_surrounding_whitespace = true,
-          },
-        },
-      },
-    },
     treesitter = { -- overrides `require("treesitter").setup(...)`
       -- ensure_installed = { "lua", "c", "cpp", "python" },
       auto_install = true,
@@ -453,6 +399,7 @@ local config = {
           { noremap = true, silent = true, desc = "Toggle float powershell" }
         )
     vim.api.nvim_set_keymap(
+      "n",
       "<c-\\>",
       "<cmd>lua TOGGLE_POWERSHELL()<CR>",
       { noremap = true, silent = true, desc = "Toggle float powershell" }
