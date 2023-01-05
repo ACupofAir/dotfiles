@@ -25,6 +25,8 @@ set shiftwidth=4 "设置缩进长度
 set tabstop=4 "设置tab长度，一般tab长度为8"
 set softtabstop=4
 set expandtab
+set spell spelllang=en_us
+set complete+=kspell
 %retab!
 
 set history=1000
