@@ -404,7 +404,9 @@ local config = {
 	-- this function is run last and is a good place to configuring
 	-- augroups/autocommands and custom filetypes also this just pure lua so
 	-- anything that doesn't fit in the normal config locations above can go here
-	polish = function() end,
+	polish = function()
+		vim.opt.complete:append("kspell")
+	end,
 	-- all other entries override the require("<key>").setup({...}) call for default plugins
 }
 return config
