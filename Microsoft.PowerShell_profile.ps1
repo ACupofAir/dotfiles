@@ -4,6 +4,7 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Invoke-Expression (&starship init powershell)
 $Script:dirs_stack = New-Object System.Collections.Generic.List[string]
+
 ###############################################################################
 ##############################My-Functions#####################################
 ###############################################################################
