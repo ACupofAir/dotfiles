@@ -45,6 +45,42 @@ function Get-Translated-Text($text)
   python -m googletranslate zh-CN -r "plain" $text
 }
 
+function Get-Dir-Stack
+{
+  Write-Host "Directory Stack:" -ForegroundColor green
+  Write-Output "-------------------------------------------------------------"
+  [String]$dirs_text = Get-Location -stack
+  if ($dirs_text.Length -gt 0)
+  {
+    [String[]]$script:dirs_arr = $dirs_text -split " " |  Select-Object -Unique
+    for ($i = 0; $i -le ($dirs_arr.length -1); $i += 1)
+    {
+      Write-Output "$i    $($dirs_arr[$i])"
+    }
+  } else
+  {
+    Write-Host "The stack is empty, use 'pushd dir_name' to push the directory to the stack" -ForegroundColor red
+  }
+}
+
+function Set-Dir-Stack($input_text)
+{
+  if ($null -eq $input_text)
+  {
+    Push-Location
+  } elseif ($input_text -is [ int ] -and $input_text -ilt $dirs_arr.length)
+  {
+    Set-Location $dirs_arr[$input_text]
+  } elseif ($input_text -is [ string ])
+  {
+    Push-Location $input_text
+  } else
+  {
+    Write-Error("The directory stack length is $($dirs_arr.length)")
+    Get-Dir-Stack
+  }
+}
+
 ###############################################################################
 ################################My-Alias#######################################
 ###############################################################################
@@ -54,6 +90,8 @@ Set-Alias -Name wc measure
 Set-Alias -Name historys Get-Historys
 Set-Alias -Name weather Get-Weather-Report
 Set-Alias -Name trans Get-Translated-Text
+Set-Alias -Name dv Get-Dir-Stack
+Set-Alias -Name pd Set-Dir-Stack
 
 ###############################################################################
 ################################My-Env-Var#####################################
