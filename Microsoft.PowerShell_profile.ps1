@@ -67,15 +67,20 @@ function Set-Dir-Stack($input_text)
 {
   if ($null -eq $input_text)
   {
+    # Put current directory into stack
     Push-Location
   } elseif ($input_text -is [ int ] -and $input_text -ilt $dirs_arr.length)
   {
+    # Go to the directory in the stack whose index is the input_text
     Set-Location $dirs_arr[$input_text]
   } elseif ($input_text -is [ string ])
   {
-    Push-Location $input_text
+    # Go to the directory of input, and put it in the stack
+    Set-Location $input_text
+    Push-Location
   } else
   {
+    # If the input_text is unavailable, print error info and show the current stack
     Write-Error("The directory stack length is $($dirs_arr.length)")
     Get-Dir-Stack
   }
