@@ -3,7 +3,7 @@ Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Invoke-Expression (&starship init powershell)
-
+$Script:dirs_stack = New-Object System.Collections.Generic.List[string]
 ###############################################################################
 ##############################My-Functions#####################################
 ###############################################################################
@@ -45,21 +45,24 @@ function Get-Translated-Text($text)
   python -m googletranslate zh-CN -r "plain" $text
 }
 
+function Show-Link-Files($dir_name)
+{
+  Get-ChildItem $dir_name -force | Where-Object{$_.LinkType} | Select-Object FullName,LinkType,Target
+}
+
 function Get-Dir-Stack
 {
-  Write-Host "Directory Stack:" -ForegroundColor green
-  Write-Output "-------------------------------------------------------------"
-  [String]$dirs_text = Get-Location -stack
-  if ($dirs_text.Length -gt 0)
+  if ($dirs_stack.Count -eq 0)
   {
-    [String[]]$script:dirs_arr = $dirs_text -split " " |  Select-Object -Unique
-    for ($i = 0; $i -le ($dirs_arr.length -1); $i += 1)
-    {
-      Write-Output "$i    $($dirs_arr[$i])"
-    }
+    Write-Host "The stack is empty, use 'pd dir_name' to push the directory to the stack" -ForegroundColor red
   } else
   {
-    Write-Host "The stack is empty, use 'pushd dir_name' to push the directory to the stack" -ForegroundColor red
+    Write-Host "Directory Stack:" -ForegroundColor green
+    Write-Output "-------------------------------------------------------------"
+    for ($i = 0; $i -le ($dirs_stack.Count -1); $i += 1)
+    {
+      Write-Output "$i    $($dirs_stack[$i])"
+    }
   }
 }
 
@@ -67,17 +70,40 @@ function Set-Dir-Stack($input_text)
 {
   if ($null -eq $input_text)
   {
-    Push-Location
-  } elseif ($input_text -is [ int ] -and $input_text -ilt $dirs_arr.length)
+    # Put current directory into stack
+    $current_dir = $(Get-Location)
+    if ($current_dir -notin $dirs_stack)
+    {
+      $dirs_stack.Add($current_dir)
+    } else
+    {
+      Write-Host "Current directory has been added in the stack" -ForegroundColor blue
+    }
+  } elseif ($input_text -is [ int ] -and $input_text -lt $dirs_stack.Count)
   {
-    Set-Location $dirs_arr[$input_text]
+    # Go to the directory in the stack whose index is the input_text
+    Set-Location $dirs_stack[$input_text]
   } elseif ($input_text -is [ string ])
   {
-    Push-Location $input_text
+    # Go to the directory of input, and put it in the stack
+    Set-Location $input_text -ErrorAction stop
+    $dirs_stack.Add($(Get-Location))
   } else
   {
-    Write-Error("The directory stack length is $($dirs_arr.length)")
+    # If the input_text is unavailable, print error info and show the current stack
+    Write-Error("The directory stack length is $($dirs_stack.Count)")
     Get-Dir-Stack
+  }
+}
+
+function Remove-Dir-Stack-Item($index)
+{
+  if ($index -is [ int ] -and $index -lt $dirs_stack.Count)
+  {
+    $dirs_stack.RemoveAt($index)
+  } else
+  {
+    Write-Error("The index $index must less than stack length $($dirs_stack.Count)")
   }
 }
 
@@ -92,6 +118,8 @@ Set-Alias -Name weather Get-Weather-Report
 Set-Alias -Name trans Get-Translated-Text
 Set-Alias -Name dv Get-Dir-Stack
 Set-Alias -Name pd Set-Dir-Stack
+Set-Alias -Name pp Remove-Dir-Stack-Item
+Set-Alias -Name ll Show-Link-Files
 
 ###############################################################################
 ################################My-Env-Var#####################################
