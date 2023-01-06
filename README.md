@@ -4,7 +4,7 @@ dotfiles
 
 > Organize my dotfiles with ln command; and sync them with git.
 
-## :toolbox:Usage
+## ⚙️Setup
 
 ### PowerShell Config `zshrc`
 
@@ -34,6 +34,23 @@ dotfiles
 > `init_offline.lua` is the offline version of user/init.lua
 
 - On windows :window: wiht :link:[Atsrovim](AstroNvim/AstroNvim) `ln init.lua ~/AppData/Local/nvim/lua/user/init.lua`
+
+## :toolbox:Usage
+
+### PowerShell
+
+- Directors Stack Function
+  - `pd`: pushd the current directory into stack
+  - `pd $dir_name`: pushd the directory named `$dir_name` into stack
+  - `dv`: show the directory in stack
+  - `pd $index`: switch to the directory in stack whose index is `$index`
+  - `pp $index`: remove to the directory whose index is `$index` from stack
+- Proxy Usage
+  - `pxon`: set proxy
+  - `pxoff`: clear proxy
+  - `Set-Git-Proxy`: set git proxy
+- Historys: `historys` will show all powershell command history
+- Translator: `trans $text` will translate `$text` to English or Chinese
 
 ## :warning:note
 

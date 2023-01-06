@@ -290,14 +290,11 @@ local config = {
 			{ "tpope/vim-surround" },
 			{ "tpope/vim-repeat" },
 			{ "ACupofAir/nvim-repl", ft = "python" },
-			{ "hrsh7th/cmp-emoji", ft = "markdown" },
 			{ "md-img-paste-devs/md-img-paste.vim", ft = "markdown" },
 			{ "voldikss/vim-translator" },
 		},
 		cmp = {
-			sources = {
-				{ name = "emoji" },
-			},
+			sources = {},
 		},
 		-- All other entries override the require("<key>").setup({...}) call for default plugins
 		["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
