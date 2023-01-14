@@ -58,10 +58,11 @@ function Get-Dir-Stack
   } else
   {
     Write-Host "Directory Stack:" -ForegroundColor green
-    Write-Output "-------------------------------------------------------------"
+    Write-Host "-------------------------------------------------------------" -ForegroundColor Yellow
     for ($i = 0; $i -le ($dirs_stack.Count -1); $i += 1)
     {
-      Write-Output "$i    $($dirs_stack[$i])"
+      Write-Host "$i    " -NoNewline -ForegroundColor Cyan
+      Write-Host "$($dirs_stack[$i])"
     }
   }
 }
@@ -83,6 +84,8 @@ function Set-Dir-Stack($input_text)
   {
     # Go to the directory in the stack whose index is the input_text
     Set-Location $dirs_stack[$input_text]
+    Write-Host "Jump to " -NoNewline
+    Write-Host "$($dirs_stack[$input_text])" -ForegroundColor Green
   } elseif ($input_text -is [ string ])
   {
     # Go to the directory of input, and put it in the stack
