@@ -4,7 +4,7 @@ dotfiles
 
 > Organize my dotfiles with ln command; and sync them with git.
 
-## ⚙️Setup
+## :gear:Setup
 
 ### PowerShell Config `zshrc`
 
