@@ -33,7 +33,12 @@ dotfiles
 
 > `init_offline.lua` is the offline version of user/init.lua
 
-- On windows :window: wiht :link:[Atsrovim](AstroNvim/AstroNvim) `ln init.lua ~/AppData/Local/nvim/lua/user/init.lua`
+- On windows :window: with :link:[Atsronvim](https://astronvim.github.io/), follow the official tutor to install astronvim
+- make the customer user folder to use the init.lua in the dotfiles
+  - `mkdir ~/AppData/Local/nvim/lua/user/`
+- link the init.lua to the target position to apply it
+  - **change the user_name to your local folder**
+  - `sudo ln -s init.lua C:\Users\user_name\AppData\Local\nvim\lua\user\init.lua`
 
 ## :toolbox:Usage
 
