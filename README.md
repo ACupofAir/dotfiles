@@ -64,5 +64,5 @@ dotfiles
 
 ## :warning:note
 
-- On windows: `ln -s` will not work right, should use hard link `ln file1 file2`
 - Should use full path `ln -s $fullpath/dotfile/xxx $fullpath/xxx`
+- Should use `sudo` prefix

@@ -239,6 +239,7 @@ timeout_ms = 1000, -- default format timeout
             ["<leader>rr"] = { "<cmd>ReplSend<cr>", desc = "nvim-repl send current line" },
             ["<leader>rc"] = { "<cmd>ReplRunCell<cr>", desc = "nvim-repl run cell" },
             ["<leader>fd"] = { "<cmd>cd %:p:h<cr>", desc = "Go to the current file directory" },
+            ["<leader>fe"] = { "<cmd>!explorer .<cr>", desc = "Use explorer to open the current folder" },
             ["<leader>fp"] = { "<cmd>call mdip#MarkdownClipboardImage()<CR>", desc = "Paste image from clipboard" },
             ["<leader>fw"] = {
                 function()
