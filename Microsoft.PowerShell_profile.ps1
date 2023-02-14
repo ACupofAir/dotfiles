@@ -3,7 +3,8 @@ Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Invoke-Expression (&starship init powershell)
-$Script:dirs_stack = New-Object System.Collections.Generic.List[string]
+Import-Module -Name ./PSModules/writeBig/ -DisableNameChecking
+Import-Module -Name ./PSModules/dirStack/ -DisableNameChecking
 
 ###############################################################################
 ##############################My-Functions#####################################
@@ -51,6 +52,7 @@ function Show-Link-Files($dir_name)
   Get-ChildItem $dir_name -force | Where-Object{$_.LinkType} | Select-Object FullName,LinkType,Target
 }
 
+<<<<<<< HEAD
 function Get-Dir-Stack
 {
   if ($dirs_stack.Count -eq 0)
