@@ -62,8 +62,16 @@ function Get-Dir-Stack
     Write-Host "-------------------------------------------------------------" -ForegroundColor Yellow
     for ($i = 0; $i -le ($dirs_stack.Count -1); $i += 1)
     {
-      Write-Host "$i    " -NoNewline -ForegroundColor Cyan
+      Write-Host "  $i  " -NoNewline -ForegroundColor Cyan
+      Write-Host "|  " -NoNewline -ForegroundColor Yellow
       Write-Host "$($dirs_stack[$i])"
+      # Write-Host "-------------------------------------------------------------" -ForegroundColor Yellow
+    }
+    Write-Host "-------------------------------------------------------------" -ForegroundColor Yellow
+    $input_idx = Read-Host "Select which stack you will go (input should be number)"
+    if ($null -ne $input_idx)
+    {
+      Set-Location $dirs_stack[$input_idx]
     }
   }
 }
