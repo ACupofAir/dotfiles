@@ -4,7 +4,7 @@ dotfiles
 
 > Organize my dotfiles with ln command; and sync them with git.
 
-## ⚙️Setup
+## :gear:Setup
 
 ### PowerShell Config `zshrc`
 
@@ -13,7 +13,7 @@ dotfiles
 - `mkdir ~/Document/PowerShell`
 - Install [StarShip](https://github.com/starship/starship) `scoop install starship`
 - Install :link:[PSReadline](https://github.com/PowerShell/PSReadLine) click the link and look the readme
-- `ln xxx/dotfile/Microsoft.PowerShell_profile.ps1 ~/Document/PowerShell/Microsoft.PowerShell_profile.ps1`
+- `ln -s xxx/dotfile/Microsoft.PowerShell_profile.ps1 $profile`
 
 ### Zsh Config `zshrc`
 
@@ -33,26 +33,36 @@ dotfiles
 
 > `init_offline.lua` is the offline version of user/init.lua
 
-- On windows :window: wiht :link:[Atsrovim](AstroNvim/AstroNvim) `ln init.lua ~/AppData/Local/nvim/lua/user/init.lua`
+- On windows :window: with :link:[Atsronvim](https://astronvim.github.io/), follow the official tutor to install astronvim
+- make the customer user folder to use the init.lua in the dotfiles
+  - `mkdir ~/AppData/Local/nvim/lua/user/`
+- link the init.lua to the target position to apply it
+  - **change the user_name to your local folder**
+  - `sudo ln -s init.lua C:\Users\user_name\AppData\Local\nvim\lua\user\init.lua`
 
 ## :toolbox:Usage
 
 ### PowerShell
 
-- Directors Stack Function
+- Directors Stack Function (no need install other plugins)
+  ![dir_stack_demo](res/dir_stack_demo.gif)
   - `pd`: pushd the current directory into stack
   - `pd $dir_name`: pushd the directory named `$dir_name` into stack
-  - `dv`: show the directory in stack
+  - `dv`: show the directory in stack(dv is the alias from `dirs -v` on linux)
   - `pd $index`: switch to the directory in stack whose index is `$index`
-  - `pp $index`: remove to the directory whose index is `$index` from stack
+  - `pp $index`: popd the directory whose index is `$index` from stack
 - Proxy Usage
   - `pxon`: set proxy
   - `pxoff`: clear proxy
   - `Set-Git-Proxy`: set git proxy
-- Historys: `historys` will show all powershell command history
-- Translator: `trans $text` will translate `$text` to English or Chinese
+- Historys
+  - need install [PSReadline](https://github.com/PowerShell/PSReadLine)
+  - `historys` will show all powershell command history
+- Translator
+  - need install python and [google-translate-for-goldendict](https://github.com/xinebf/google-translate-for-goldendict)
+  - `trans $text` will translate `$text` to English or Chinese
 
 ## :warning:note
 
-- On windows: `ln -s` will not work right, should use hard link `ln file1 file2`
 - Should use full path `ln -s $fullpath/dotfile/xxx $fullpath/xxx`
+- Should use `sudo` prefix
