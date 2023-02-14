@@ -9,7 +9,7 @@ local config = {
 	-- configure astronvim updates
 	updater = {
 		remote = "origin", -- remote to use
-		channel = "nightly", -- "stable" or "nightly"
+		channel = "stable", -- "stable" or "nightly"
 		version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (stable only)
 		branch = "main", -- branch name (nightly only)
 		commit = nil, -- commit hash (nightly only)
