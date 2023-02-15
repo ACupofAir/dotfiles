@@ -6,13 +6,15 @@ dotfiles
 
 ## :gear:Setup
 
-### PowerShell Config `zshrc`
+### PowerShell Config
 
 - lookup the powershell version `$PSVersionTable`
 - Install powershell 7
 - `mkdir ~/Document/PowerShell`
 - Install [StarShip](https://github.com/starship/starship) `scoop install starship`
 - Install :link:[PSReadline](https://github.com/PowerShell/PSReadLine) click the link and look the readme
+- Install module [write-big-char](https://github.com/ACupofAir/Write-Big-Char): `Install-Module -Name Write-Big-Char`
+- Install module [directory-stack](https://github.com/ACupofAir/Directory-Stack): `Install-Module -Name directory-stack`
 - `ln -s xxx/dotfile/Microsoft.PowerShell_profile.ps1 $profile`
 
 ### Zsh Config `zshrc`
@@ -61,6 +63,9 @@ dotfiles
 - Translator
   - need install python and [google-translate-for-goldendict](https://github.com/xinebf/google-translate-for-goldendict)
   - `trans $text` will translate `$text` to English or Chinese
+- Draw String Bigger
+  ![](https://github.com/ACupofAir/Write-Big-Char/blob/main/res/2023-02-15-17-06-07.png?raw=true)
+  - `draw $TEXT`: draw `$TEXT` bigger on powershell
 
 ## :warning:note
 

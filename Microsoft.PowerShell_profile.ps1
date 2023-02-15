@@ -3,8 +3,6 @@ Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Invoke-Expression (&starship init powershell)
-Import-Module -Name ~/workspace/Personal/dotfiles/PSModules/writeBig/ -DisableNameChecking
-Import-Module -Name ~/workspace/Personal/dirStack/ -DisableNameChecking
 
 ###############################################################################
 ##############################My-Functions#####################################
