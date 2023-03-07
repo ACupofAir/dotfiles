@@ -1,6 +1,6 @@
-"v2022.11.9._Linux
-"written by junwang
-
+" @Version: 2023.03.07.Linux
+" @Author : ACupofAir
+"
 " configs {{{
 set clipboard=unnamed "set the clipboard sync with system clipboard
 set autochdir
@@ -25,9 +25,11 @@ set shiftwidth=4 "设置缩进长度
 set tabstop=4 "设置tab长度，一般tab长度为8"
 set softtabstop=4
 set expandtab
-set spell spelllang=en_us
+setlocal spell spelllang=en_us
 set complete+=kspell
 %retab!
+
+colorscheme elflord
 
 set history=1000
 set hlsearch
@@ -38,13 +40,13 @@ set numberwidth=4
 set t_Co=256
 set termguicolors
 set showtabline=2
-set foldmethod=indent
+"set foldmethod=indent
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-" }}}
+" }}} 
 
 " mappings{{{
 noremap <Space> <Nop>
@@ -59,4 +61,4 @@ inoremap [ []<LEFT>
 inoremap { {}<LEFT>
 inoremap ' ''<LEFT>
 inoremap " ""<LEFT>
-" }}}
+" }}} 
