@@ -32,8 +32,7 @@ function Get-Historys
 
 function Start-Conda
 {
-   (& "C:\Users\air\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
-}
+   (& "C:\Users\june\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression }
 
 function Get-Weather-Report
 {
@@ -60,8 +59,9 @@ Set-Alias -Name historys Get-Historys
 Set-Alias -Name weather Get-Weather-Report
 Set-Alias -Name trans Get-Translated-Text
 Set-Alias -Name dv Get-Dir-Stack
-Set-Alias -Name pd Set-Dir-Stack
+Set-Alias -Name pd Add-Dir-Item
 Set-Alias -Name pp Remove-Dir-Stack-Item
+Set-Alias -Name jp Set-Stacked-Dir
 Set-Alias -Name ll Show-Link-Files
 Set-Alias -Name draw Write-Big-Char
 
