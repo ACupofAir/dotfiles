@@ -32,7 +32,8 @@ function Get-Historys
 
 function Start-Conda
 {
-   (& "C:\Users\june\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression }
+  (& "C:\Users\june\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression 
+}
 
 function Get-Weather-Report
 {
@@ -47,6 +48,19 @@ function Get-Translated-Text($text)
 function Show-Link-Files($dir_name)
 {
   Get-ChildItem $dir_name -force | Where-Object{$_.LinkType} | Select-Object FullName,LinkType,Target
+}
+
+function Change-EOL-LF($folderPath) {
+  $fileList = Get-ChildItem -Path $folderPath -File -Recurse
+  foreach ($file in $fileList) {
+    Write-Host $file
+    $text = [IO.File]::ReadAllText($file) -replace "`r`n", "`n"
+    [IO.File]::WriteAllText($file, $text)
+    # $fileContent = Get-Content -Path $file.FullName -Raw
+    # $fileContent = $fileContent -replace "`r`n", "`n"  # Replace CRLF with LF
+    # Set-Content -Path $file.FullName -Value $fileContent
+  }
+  Write-Host "EOL characters changed from CRLF to LF in all files."
 }
 
 ###############################################################################
@@ -64,6 +78,7 @@ Set-Alias -Name pp Remove-Dir-Stack-Item
 Set-Alias -Name jp Set-Stacked-Dir
 Set-Alias -Name ll Show-Link-Files
 Set-Alias -Name draw Write-Big-Char
+Set-Alias -Name which Get-Command
 
 ###############################################################################
 ################################My-Env-Var#####################################
