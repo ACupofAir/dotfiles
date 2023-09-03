@@ -63,6 +63,41 @@ function Change-EOL-LF($folderPath) {
   Write-Host "EOL characters changed from CRLF to LF in all files."
 }
 
+function Get-Folder-Size($folderPath) {
+  $folderSize = Get-ChildItem -Path $folderPath -Recurse | Measure-Object -Property Length -Sum
+  $folderSizeBytes = $folderSize.Sum
+  $folderSizeMB = $folderSizeBytes / 1MB
+  $folderSizeGB = $folderSizeBytes / 1GB
+  Write-Host "Folder Size: $folderSizeBytes bytes ($folderSizeMB MB or $folderSizeGB GB)"
+}
+
+function Get-File-Size($filePath) {
+  $fileSizeBytes = (Get-Item -Path $filePath).Length
+  $fileSizeKB = $fileSizeBytes / 1KB
+  $fileSizeMB = $fileSizeBytes / 1MB
+  $wordCount = (Get-Content -Path $filePath | Measure-Object -Word).Words
+  $lineCount = (Get-Content -Path $filePath | Measure-Object -Line).Lines
+  Write-Host "File Size: $fileSizeBytes bytes($fileSizeKB KB or $fileSizeMB MB)"
+  Write-Host "Word Count: $wordCount words"
+  Write-Host "Line Count: $lineCount lines"
+}
+
+function Get-Files-Info($path) {
+  if (Test-Path -Path $path) {
+    $item = Get-Item -Path $path
+    # Check if the item is a file
+    if ($item.PSIsContainer -eq $false) {
+      Get-File-Size($item)
+    }
+    # Check if the item is a folder (directory)
+    else {
+      Get-Folder-Size($item)
+    }
+  } else {
+    Write-Error "The path '$path' does not exist."
+  }
+}
+
 ###############################################################################
 ################################My-Alias#######################################
 ###############################################################################
@@ -79,6 +114,7 @@ Set-Alias -Name jp Set-Stacked-Dir
 Set-Alias -Name ll Show-Link-Files
 Set-Alias -Name draw Write-Big-Char
 Set-Alias -Name which Get-Command
+Set-Alias -Name du Get-Files-Info
 
 ###############################################################################
 ################################My-Env-Var#####################################
