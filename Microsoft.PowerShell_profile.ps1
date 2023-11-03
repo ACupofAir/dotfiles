@@ -63,8 +63,6 @@ function Change-EOL-LF($folderPath) {
   Write-Host "EOL characters changed from CRLF to LF in all files."
 }
 
-<<<<<<< HEAD
-=======
 function Get-Folder-Size($folderPath) {
   $folderSize = Get-ChildItem -Path $folderPath -Recurse | Measure-Object -Property Length -Sum
   $folderSizeBytes = $folderSize.Sum
@@ -100,7 +98,6 @@ function Get-Files-Info($path) {
   }
 }
 
->>>>>>> 245390aa236a9cb34a6684cd6333f504521bdb79
 ###############################################################################
 ################################My-Alias#######################################
 ###############################################################################
@@ -117,10 +114,7 @@ Set-Alias -Name jp Set-Stacked-Dir
 Set-Alias -Name ll Show-Link-Files
 Set-Alias -Name draw Write-Big-Char
 Set-Alias -Name which Get-Command
-<<<<<<< HEAD
-=======
 Set-Alias -Name du Get-Files-Info
->>>>>>> 245390aa236a9cb34a6684cd6333f504521bdb79
 
 ###############################################################################
 ################################My-Env-Var#####################################
