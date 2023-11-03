@@ -21,15 +21,15 @@ set ruler
 set foldenable
 set autoindent
 set cindent
-set shiftwidth=4 "设置缩进长度
-set tabstop=4 "设置tab长度，一般tab长度为8"
+set shiftwidth=4 "indent length setting
+set tabstop=4 "tab length setting
 set softtabstop=4
 set expandtab
 setlocal spell spelllang=en_us
 set complete+=kspell
 %retab!
 
-colorscheme elflord
+colorscheme desert
 
 set history=1000
 set hlsearch
