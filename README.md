@@ -12,7 +12,7 @@ dotfiles
 - Install powershell 7
 - `mkdir ~/Document/PowerShell`
 - Install [StarShip](https://github.com/starship/starship) `scoop install starship`
-- Install :link:[PSReadline](https://github.com/PowerShell/PSReadLine) click the link and look the readme
+- Install :link:[PSReadline](https://github.com/PowerShell/PSReadLine) **(No need for powershell 7, for it has been built default)** click the link and look the readme
 - Install module [write-big-char](https://github.com/ACupofAir/Write-Big-Char): `Install-Module -Name Write-Big-Char`
 - Install module [directory-stack](https://github.com/ACupofAir/Directory-Stack): `Install-Module -Name directory-stack`
 - `ln -s xxx/dotfile/Microsoft.PowerShell_profile.ps1 $profile`
@@ -35,12 +35,33 @@ dotfiles
 
 > `init_offline.lua` is the offline version of user/init.lua
 
-- On windows :window: with :link:[Atsronvim](https://astronvim.github.io/), follow the official tutor to install astronvim
-- make the customer user folder to use the init.lua in the dotfiles
-  - `mkdir ~/AppData/Local/nvim/lua/user/`
-- link the init.lua to the target position to apply it
-  - **change the user_name to your local folder**
-  - `sudo ln -s init.lua C:\Users\user_name\AppData\Local\nvim\lua\user\init.lua`
+- On windows :window: with :link:[lazyvim](https://www.lazyvim.org/), follow the official tutor to install lazyvim, or use my conifguration following
+
+1. Make a backup of your current Neovim files:
+
+```powershell
+Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
+
+# optional but recommended
+Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
+```
+
+2. Clone my conifguration
+```powershell
+git clone git@github.com:ACupofAir/lazyvim_config.git $env:LOCALAPPDATA\nvim
+```
+
+3. Remove the .git folder, so you can add it to your own repo later
+
+```powershell
+Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
+```
+
+4. Need to rely on other components
+      * im-select: `scoop bucket add im-select https://github.com/daipeihust/im-select`, then`scoop install im-select`
+      * gcc: `scoop install gcc`
+      * a nerd font: open this [website](https://www.nerdfonts.com/), choose anyone your liked
+5. Start Neovim! `nvim`
 
 ## :toolbox:Usage
 
