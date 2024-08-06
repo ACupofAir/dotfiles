@@ -10,7 +10,8 @@ dotfiles
 
 - lookup the powershell version `$PSVersionTable`
 - Install powershell 7
-- `mkdir ~/Document/PowerShell`
+- `mkdir ~/Document/PowerShell`(📎some version maybe in ~/Documents/WindowsPowerShell, you can `echo $profile`)
+- Install [scoop](https://scoop.sh/)
 - Install [StarShip](https://github.com/starship/starship) `scoop install starship`
 - Install :link:[PSReadline](https://github.com/PowerShell/PSReadLine) **(No need for powershell 7, for it has been built default)** click the link and look the readme
 - Install module [write-big-char](https://github.com/ACupofAir/Write-Big-Char): `Install-Module -Name Write-Big-Char`
@@ -47,6 +48,7 @@ Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
 ```
 
 2. Clone my conifguration
+
 ```powershell
 git clone git@github.com:ACupofAir/lazyvim_config.git $env:LOCALAPPDATA\nvim
 ```
@@ -58,9 +60,22 @@ Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
 ```
 
 4. Need to rely on other components
-      * im-select: `scoop bucket add im-select https://github.com/daipeihust/im-select`, then`scoop install im-select`
-      * gcc: `scoop install gcc`
-      * a nerd font: open this [website](https://www.nerdfonts.com/), choose anyone your liked
+
+- im-select
+
+```bash
+scoop bucket add im-select https://github.com/daipeihust/im-select
+scoop install im-select
+```
+
+- gcc
+
+```bash
+scoop install gcc
+```
+
+- a nerd font: open this [website](https://www.nerdfonts.com/), choose anyone your liked
+
 5. Start Neovim! `nvim`
 
 ## :toolbox:Usage
