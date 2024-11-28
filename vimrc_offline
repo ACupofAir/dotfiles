@@ -37,8 +37,8 @@ set novb
 set noerrorbells
 set wrap
 set numberwidth=4
-set t_Co=256
-set termguicolors
+" set t_Co=256
+" set termguicolors
 set showtabline=2
 "set foldmethod=indent
 let g:netrw_banner = 0
