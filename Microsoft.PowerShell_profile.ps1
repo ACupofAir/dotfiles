@@ -32,7 +32,7 @@ function Get-Historys
 
 function Start-Conda
 {
-  (& "C:\Users\june\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression 
+  (& "C:\Users\timet\scoop\apps\miniconda3\current\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
 }
 
 function Get-Weather-Report
@@ -121,3 +121,9 @@ Set-Alias -Name du Get-Files-Info
 ###############################################################################
 $env:http_proxy="http://127.0.0.1:7890"
 $env:https_proxy="http://127.0.0.1:7890"
+
+#f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
+
+Import-Module -Name Microsoft.WinGet.CommandNotFound
+#f45873b3-b655-43a6-b217-97c00aa0db58
+
