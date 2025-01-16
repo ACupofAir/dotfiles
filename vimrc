@@ -31,7 +31,7 @@ function! MyTabLine()
     if buflisted(i)
       if i == bufnr('%')
         " highlight tabline
-        let s .= '%#TabLineSel#' . bufname(i) . ' '
+        let s .= '%#TabLineSel#' . bufname(i) . '*'
       else
         let s .= '%#TabLine#' . bufname(i) . ' '
       endif
