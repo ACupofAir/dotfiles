@@ -9,4 +9,4 @@ current_date = datetime.now()
 # 计算天数间隔
 days_difference = (current_date - start_date).days
 
-print(f"从2013年9月1日到今天的间隔天数是：{days_difference}天")
+print(f"从{start_date}到今天的间隔天数是：{days_difference}天")
