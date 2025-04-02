@@ -1,4 +1,4 @@
-" @Version: 2025-01-15 22:29
+" @Version: 2025-04-02 11:01
 " @Author : ACupofAir
 "
 "==============================configs==============================
@@ -25,17 +25,24 @@ inoremap ' ''<LEFT>
 inoremap " ""<LEFT>
 
 "==============================function==============================
+
 function! MyTabLine()
   let s = ''
   for i in range(1, bufnr('$'))
     if buflisted(i)
       if i == bufnr('%')
         " highlight tabline
-        let s .= '%#TabLineSel#' . bufname(i) . '*'
+        let s .= '%#TabLineSel#' . bufname(i) . '*%#TabLineFill#|'
+
       else
-        let s .= '%#TabLine#' . bufname(i) . ' '
+        let s .= '%#TabLine#' . bufname(i) . '%#TabLineFill#|'
       endif
     endif
   endfor
   return s
 endfunction
+
+"==============================highlight==============================
+highlight TabLineSel ctermfg=white ctermbg=blue cterm=bold
+highlight TabLine ctermfg=darkgray ctermbg=black
+highlight TabLineFill ctermfg=black ctermbg=black
