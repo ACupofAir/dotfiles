@@ -25,12 +25,11 @@ dotfiles
 - You should change the proxy ip and port in my zshrc
 
 ### Vim Config `vimrc`
-
-- Clone this repository to your own machine
-- Install [vim-plug](https://github.com/junegunn/vim-plug)
-- `ln -s thisFoldPosition/vimrc ~/.vimrc`
-- Open your vim, and type `:PlugInstall` to install the plugs in my dotfile
-- **notice:** You may need set your proxy firstly(If you have config the zshrc, you can use `pxon` command)
+* 🥳Highlight: 
+    * It is **completely offline**.
+    * Tabline support.
+* Usage: Just replace this `vimrc` to ~/.vimrc: `cat vimrc > ~/.vimrc`
+![](assets\README_2025-04-02_11-05-19.png)
 
 ### Neovim Config `init.lua`
 
