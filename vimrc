@@ -1,9 +1,8 @@
-" @Version: 2025-04-02 11:01
+" @Version: 2025-06-27 01:29
 " @Author : ACupofAir
 "
 "==============================configs==============================
 syntax on
-set autochdir
 set wildmenu
 set number
 set showtabline=2
@@ -21,12 +20,6 @@ nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>e :Ex<CR>
 nnoremap <leader>rn *Ncgn
 
-inoremap ( ()<LEFT>
-inoremap [ []<LEFT>
-inoremap { {}<LEFT>
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
-
 "==============================function==============================
 
 function! MyTabLine()
@@ -36,7 +29,6 @@ function! MyTabLine()
       if i == bufnr('%')
         " highlight tabline
         let s .= '%#TabLineSel#' . bufname(i) . '*%#TabLineFill#|'
-
       else
         let s .= '%#TabLine#' . bufname(i) . '%#TabLineFill#|'
       endif
@@ -49,3 +41,15 @@ endfunction
 highlight TabLineSel ctermfg=white ctermbg=blue cterm=bold
 highlight TabLine ctermfg=darkgray ctermbg=black
 highlight TabLineFill ctermfg=black ctermbg=black
+
+"==============================  plugs  ==============================
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+call plug#end()
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fr :History<CR>
+nnoremap <leader>sc :History:<CR>
+nnoremap <leader>sb :Buffers<CR>
+nnoremap <leader>sg :RG<CR>
+nnoremap <leader>sl :BLines<CR>
