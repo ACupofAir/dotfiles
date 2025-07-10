@@ -1,4 +1,4 @@
-" @Version: 2025-06-27 01:29
+" @Version: 2025-07-10 09:33
 " @Author : ACupofAir
 "
 "==============================configs==============================
@@ -21,16 +21,29 @@ nnoremap <leader>e :Ex<CR>
 nnoremap <leader>rn *Ncgn
 
 "==============================function==============================
-
 function! MyTabLine()
   let s = ''
   for i in range(1, bufnr('$'))
     if buflisted(i)
+      let bufn = bufname(i)
+      if empty(bufn)
+          let bufn = '[No Name]'
+      endif
+
+      let is_modified = getbufvar(i, '&modified')
+
       if i == bufnr('%')
-        " highlight tabline
-        let s .= '%#TabLineSel#' . bufname(i) . '*%#TabLineFill#|'
+        if is_modified
+            let s .= '%#TabLineSelModified#' . bufn . '*%#TabLineFill#|'
+        else
+            let s .= '%#TabLineSel#' . bufn . '*%#TabLineFill#|'
+        endif
       else
-        let s .= '%#TabLine#' . bufname(i) . '%#TabLineFill#|'
+        if is_modified
+            let s .= '%#TabLineModified#' . bufn . '*%#TabLineFill#|'
+        else
+            let s .= '%#TabLine#' . bufn . '%#TabLineFill#|'
+        endif
       endif
     endif
   endfor
@@ -38,9 +51,12 @@ function! MyTabLine()
 endfunction
 
 "==============================highlight==============================
-highlight TabLineSel ctermfg=white ctermbg=blue cterm=bold
+highlight TabLineSel ctermfg=white ctermbg=green cterm=bold
 highlight TabLine ctermfg=darkgray ctermbg=black
 highlight TabLineFill ctermfg=black ctermbg=black
+highlight TabLineModified ctermfg=white ctermbg=black
+highlight TabLineSelModified ctermfg=white ctermbg=red cterm=bold
+
 
 "==============================  plugs  ==============================
 call plug#begin()
