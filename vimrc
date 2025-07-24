@@ -11,20 +11,13 @@ set shiftwidth=4
 set expandtab
 set tabline=%!MyTabLine()
 
-"=============================== netrw ==============================
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 25
-let g:netrw_keepdir = 0
-
 "==============================mappings==============================
 noremap <Space> <Nop>
 map <Space> <Leader>
 nnoremap L :bnext<CR>
 nnoremap H :bprevious<CR>
 nnoremap <leader>bd :bdelete<CR>
-nnoremap <leader>e :call ToggleNetrw()<CR>
+nnoremap <leader>e :Ex<CR>
 nnoremap <leader>rn *Ncgn
 
 "==============================function==============================
@@ -55,18 +48,6 @@ function! MyTabLine()
     endif
   endfor
   return s
-endfunction
-
-
-function! ToggleNetrw()
-  for winnr in range(1, winnr('$'))
-    if getbufvar(winbufnr(winnr), '&filetype') ==# 'netrw'
-      execute winnr . 'wincmd c'
-      return
-    endif
-  endfor
-
-  Vexplore
 endfunction
 
 "==============================highlight==============================
