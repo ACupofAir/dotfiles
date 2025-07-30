@@ -1,14 +1,19 @@
-" @Version: 2025-07-10 09:33
+" @Version: Wed Jul 30 10:57:06 AM CST 2025
 " @Author : ACupofAir
 "
 "==============================configs==============================
 syntax on
+colorscheme desert
 set wildmenu
 set number
+set hlsearch
 set showtabline=2
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set nowrap
+set laststatus=2
+set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ENC=%{&fileencoding}]\ [FORMAT=%{&fileformat}]\ [POS=%l,%c]\ [%p%%]
 set tabline=%!MyTabLine()
 
 "==============================mappings==============================
