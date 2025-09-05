@@ -27,11 +27,18 @@ nnoremap <leader>rn *Ncgn
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ojroques/vim-oscyank', {'branch': 'main'} "for tmux: set -s set-clipboard on
 call plug#end()
+
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fr :History<CR>
 nnoremap <leader>sc :History:<CR>
 nnoremap <leader>sb :Buffers<CR>
 nnoremap <leader>sg :RG<CR>
 nnoremap <leader>sl :BLines<CR>
+
+augroup Yank
+      autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | execute 'OSCYankRegister "' | endif
+augroup END
 
