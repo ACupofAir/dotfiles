@@ -36,7 +36,7 @@ nnoremap <leader>sc :History:<CR>
 nnoremap <leader>sb :Buffers<CR>
 nnoremap <leader>sg :RG<CR>
 nnoremap <leader>sl :BLines<CR>
-nnoremap <leader>ss :Tags<CR>
+nnoremap <leader>st :Tags<CR>
 
 augroup Yank
       autocmd!
