@@ -1,6 +1,6 @@
 " @Version: Wed Jul 30 10:57:06 AM CST 2025
 " @Author : ACupofAir
-"
+" recommend to install ctags: <http://github.com/universal-ctags/>
 "==============================configs==============================
 syntax on
 "colorscheme desert
@@ -36,6 +36,7 @@ nnoremap <leader>sc :History:<CR>
 nnoremap <leader>sb :Buffers<CR>
 nnoremap <leader>sg :RG<CR>
 nnoremap <leader>sl :BLines<CR>
+nnoremap <leader>ss :Tags<CR>
 
 augroup Yank
       autocmd!
