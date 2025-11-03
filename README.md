@@ -25,6 +25,22 @@ dotfiles
 - You should change the proxy ip and port in my zshrc
 
 ### Vim Config `vimrc`
+- install plug:refer to  https://github.com/junegunn/vim-plug?tab=readme-ov-file#installation simply:
+**unix**
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim
+# vim run :PlugInstall
+```
+
+**windows**(powershell):
+```bash
+iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni $HOME/vimfiles/autoload/plug.vim -Force
+```	
+
+
 * 🥳Highlight: 
     * It is **completely offline**.
     * Tabline support.
