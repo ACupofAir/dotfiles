@@ -65,7 +65,7 @@ Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
 2. Clone my conifguration
 
 ```powershell
-git clone git@github.com:ACupofAir/lazyvim_config.git $env:LOCALAPPDATA\nvim
+git clone https://github.com/ACupofAir/dotfiles.git $env:LOCALAPPDATA\nvim
 ```
 
 3. Remove the .git folder, so you can add it to your own repo later
